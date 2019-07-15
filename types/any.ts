@@ -1,6 +1,10 @@
 // The ANY type is used/inferred when a particular type
 // cannot be safely predicted for a stored/returned value.
 
+// The following examples demonstrate when the 'any' type is inferred,
+// and how to annotate our code to inform typescript about
+// wtf is supposed to be happening in the program.
+
 // === EXAMPLE 1
 const blob = '{ "user": "David", "age": 15 }'; // JSON
 
@@ -45,7 +49,6 @@ for (let i = 0; i < names.length; i++) {
 }
 
 // === Example 3
-
 let nums = [1, 2, 19];
 let numberAboveTwo = false; // inference successful, type: boolean
 

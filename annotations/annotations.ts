@@ -2,6 +2,8 @@
 // our source code for TS analysis;
 // TS is aware what values are particular binding should hold
 // based on our annotations
+
+// === Variables
 let num: number = 2;
 let str: string = "string";
 let bool: boolean = true;
@@ -10,6 +12,7 @@ let obj: object = {};
 let nada: null = null;
 let udf: undefined = undefined;
 
+// Variable reinitialization
 // Any attempt to reassign the original annotated binding
 // will result in a TS error, informing us that the new type
 // is not assignable to the binding
@@ -21,13 +24,13 @@ obj = "test";
 nada = "test";
 udf = "test";
 
-// Composite Types
+// === Arrays
 const strArray: string[] = ["David", "Stephanie", "Nole"];
 const numArray: number[] = [1, 2, 3];
 const boolArray: boolean[] = [true, false, true];
 const anyArray: any[] = [1, "OI", {}];
 
-// Classes
+// === Classes
 
 // Class declaration
 class Person {}
@@ -35,14 +38,14 @@ class Person {}
 // Class instance
 const person: Person = new Person();
 
-// Object Literal
+// === Object Literal
 const DCJ: { name: string; age: number } = {
   name: "David",
   surname: "Jones",
   age: 32
 };
 
-// Functions
+// ===  Functions
 const logNumber: (i: number) => void = i => {
   console.log(i);
 };
