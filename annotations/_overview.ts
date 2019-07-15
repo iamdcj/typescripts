@@ -45,7 +45,7 @@ const DCJ: { name: string; age: number } = {
   age: 32
 };
 
-// ===  Functions
+// ===  Function Expression
 const logNumber: (i: number) => void = i => {
   console.log(i);
 };
