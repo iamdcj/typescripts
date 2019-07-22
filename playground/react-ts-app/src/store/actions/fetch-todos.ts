@@ -1,16 +1,29 @@
 import axios from 'axios';
-
 import { Dispatch } from 'redux';
+import { ActionTypes } from './types';
+
+interface Todo {
+  id: number;
+  title: string;
+  completed: boolean;
+}
+
+interface FetchTodosAction {
+  type: ActionTypes.fetchTodos;
+  payload: Todo[];
+}
 
 const url = `https://jsonplaceholder.typicode.com/todos/`;
 
 export const fetchTodos = () => {
   return async (dispatch: Dispatch)  => {
 
-    const { data } = await axios.get(url);
+    const { data } = await axios.get<Todo[]>(url); // array of Todos
 
-    dispatch({
-      type: 'FETCH_TODOS',
+    // Make it clear what this dispatch is doing,
+    // and what it relates to; ACs can get lengthy
+    dispatch<FetchTodosAction>({
+      type: ActionTypes.fetchTodos,
       payload: data
     })
 
