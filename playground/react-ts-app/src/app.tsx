@@ -5,8 +5,17 @@ interface Props {
   color?: string;
 }
 
-class App extends Component<Props> {
-  state = { counter: 0 }
+interface State {
+  counter: number;
+}
+
+class App extends Component<Props, State> {
+  constructor(props: Props) {
+    super(props);
+    
+    this.state = { counter: 0 }
+  }
+  
 
   increment = (): void => {
     this.setState({
@@ -16,7 +25,7 @@ class App extends Component<Props> {
 
   decrement = (): void => {
     this.setState({
-      counter: this.state.counter - 1
+      counter: this.state.counter ? this.state.counter - 1 : 0
     })
   }
 
@@ -25,7 +34,10 @@ class App extends Component<Props> {
       <section>
         <h1>Todos: {this.state.counter} </h1>
         <Action label="increment" action={this.increment} />
-        <Action label="decrement" action={this.decrement} />
+        {
+          this.state.counter > 0 &&
+          <Action label="decrement" action={this.decrement} />
+        }
       </section>
     );
   }
@@ -37,10 +49,8 @@ interface ActionProps {
   label: string;
 }
 
-const Action = ({ action, label }: ActionProps) => {
-  return (
-    <button onClick={action}>{label}</button>
-  )
+const Action = ({ action, label }: ActionProps): JSX.Element => {
+  return <button onClick={action}>{label}</button>
 }
 
 
