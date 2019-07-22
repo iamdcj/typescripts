@@ -24,14 +24,23 @@ const Job = {
     return `
       Role: ${this.role},
       Experience: ${this.experience} years,
-      Skills: ${this.skills.map(skill => skill)}
+      Skills: ${this.skills.map((skill: string) => skill)}
     `;
   }
+};
+
+const JobB = {
+  role: "Plumber"
 };
 
 // LogItem function receives an argument of type reportable
 // only an object which conforms to the Reportable type
 // should be passed to this function.
+// Reportable gatekeeps LogItem, ensuring whatever is passed
+// has a summarise method.
 const LogItem = (item: Reportable): void => {
   console.log(item.summarise());
 };
+
+LogItem(Job);
+LogItem(JobB);
