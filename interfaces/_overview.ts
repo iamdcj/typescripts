@@ -13,6 +13,7 @@ interface Person {
   name: string;
   age: number;
   summarise(): string;
+  sex?: string; // ? denotes optional field
 }
 
 // An instance which satisfies
