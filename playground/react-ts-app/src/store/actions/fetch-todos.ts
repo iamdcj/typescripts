@@ -6,6 +6,7 @@ export interface Todo {
   id: number;
   title: string;
   completed: boolean;
+  action?: any;
 }
 
 export interface FetchTodosAction {
@@ -13,10 +14,20 @@ export interface FetchTodosAction {
   payload: Todo[];
 }
 
+export interface FetchingTodosAction {
+  type: ActionTypes.fetchingTodos;
+  fetching: boolean;
+}
+
 const url = `https://jsonplaceholder.typicode.com/todos/`;
 
 export const fetchTodos = () => {
   return async (dispatch: Dispatch)  => {
+
+    dispatch<FetchingTodosAction>({
+      type: ActionTypes.fetchingTodos,
+      fetching: true
+    })
 
     const { data } = await axios.get<Todo[]>(url); // array of Todos
 
@@ -25,6 +36,11 @@ export const fetchTodos = () => {
     dispatch<FetchTodosAction>({
       type: ActionTypes.fetchTodos,
       payload: data
+    })
+
+    dispatch<FetchingTodosAction>({
+      type: ActionTypes.fetchingTodos,
+      fetching: false
     })
 
   }
