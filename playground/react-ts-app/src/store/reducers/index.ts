@@ -9,7 +9,6 @@ export interface Store {
   fetchingTodos: boolean
 }
 
-
 export const reducers = combineReducers<Store>({
   todos,
   fetchingTodos 
