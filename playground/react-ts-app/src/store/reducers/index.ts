@@ -4,7 +4,7 @@ import { Todo } from '../actions/fetch-todos';
 
 // Validate Store Types
 // authors know what we have in store (trololol)
-interface Store {
+export interface Store {
   todos: Todo[]
 }
 

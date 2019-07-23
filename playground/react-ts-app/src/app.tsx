@@ -1,35 +1,25 @@
-
 import React, { Component } from 'react';
 
+// STORE
+import { connect } from 'react-redux';
+import { Todo, fetchTodos } from './store/actions/fetch-todos';
+import { Store } from './store/reducers/index';
+
 interface Props {
-  color?: string;
+  todos: Todo[],
+  fetchTodos(): any
 }
 
-interface State {
-  counter: number;
-}
-
-class App extends Component<Props, State> {
-  constructor(props: Props) {
-    super(props);
-    
-    this.state = { counter: 0 }
-  }
+class App extends Component<Props> {
   
-
   increment = (): void => {
-    this.setState({
-      counter: this.state.counter + 1
-    })
   }
 
   decrement = (): void => {
-    this.setState({
-      counter: this.state.counter ? this.state.counter - 1 : 0
-    })
   }
 
   render() {
+
     return (
       <section>
         <h1>Todos: {this.state.counter} </h1>
@@ -54,4 +44,7 @@ const Action = ({ action, label }: ActionProps): JSX.Element => {
 }
 
 
-export default App;
+const mapStateToProps = ({ todos }: Store): { todos: Todo[] } => 
+  ({ todos })
+
+export default connect(mapStateToProps, { fetchTodos })(App);
