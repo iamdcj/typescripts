@@ -8,7 +8,6 @@ class Boat {
   }
 
   // Method
-
   @testDecorator
   pilot(): void {
     console.log("swish");

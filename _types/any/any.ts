@@ -4,6 +4,7 @@
 // The following examples demonstrate when the 'any' type is inferred,
 // and how to annotate our code to inform typescript about
 // wtf is supposed to be happening in the program.
+// If we avoid using any, we can keep TS informed.
 
 // === EXAMPLE 1
 const blob = '{ "user": "David", "age": 15 }'; // JSON
