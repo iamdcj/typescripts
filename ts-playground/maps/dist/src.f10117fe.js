@@ -131,6 +131,8 @@ function () {
     console.log(center);
     this.mapOptions = {
       zoom: 5,
+      maxZoom: 15,
+      minZoom: 10,
       center: center
     };
     this.map = new google.maps.Map(document.getElementById("map-canvas"), this.mapOptions);
